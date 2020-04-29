@@ -5,6 +5,8 @@ import TeamStandings from './components/TeamStandings/TeamStandings';
 import TopChallengers from './components/TopChallengers';
 import RulesTable from './components/RulesTable';
 import RuleInstanceChart from './components/RuleInstanceChart'
+import PointsByWeek from './components/PointsByWeek';
+import Teams from './components/Teams/Teams'
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
       <TopChallengers/>
       <RulesTable/>
       <RuleInstanceChart/>
+      <PointsByWeek/>
+      <Teams/>
     </div>
   );
 }
