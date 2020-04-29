@@ -14,6 +14,7 @@ class TopChallengers extends Component {
         .then(res =>res.json())
         .then((data) => {
             const topFive = data.sort((a,b)=>(b.points > a.points ? 1: -1)).slice(0,5)
+            topFive[0].name = topFive[0].name + " 👑";
             this.setState({standings: topFive})
         })
         .catch(console.log)

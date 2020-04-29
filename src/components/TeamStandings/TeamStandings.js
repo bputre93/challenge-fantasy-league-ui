@@ -13,13 +13,15 @@ class TeamStandings extends Component {
         fetch('http://localhost:3000/teams/standings')
         .then(res =>res.json())
         .then((data) => {
+            data[0].owner = data[0].owner + " 🥇";
+            data[1].owner = data[1].owner + " 🥈";
+            data[2].owner = data[2].owner + " 🥉";
             this.setState({standings: data})
         })
         .catch(console.log)
     }
 
     columns = [
-        {title: "Rank", field: "rank", hozAlign: 'left'},
         {title: "Team", field: "name", hozAlign: 'left'},
         {title: "Owner", field: "owner", hozAlign: 'left'},
         {title: "Total", field: "points", hozAlign: 'center'},
