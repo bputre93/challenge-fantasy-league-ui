@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Team from './Team/Team';
 
 
-class Teams extends Component {
+class TeamsTable extends Component {
 
     state = {
         teams: []
@@ -12,7 +12,6 @@ class Teams extends Component {
         fetch('http://localhost:3000/teams')
         .then(res => res.json())
         .then(data => {
-            console.log(data)
             this.setState({teams: data})
         })
     }
@@ -44,4 +43,4 @@ class Teams extends Component {
     }
 }
 
-export default Teams;
+export default TeamsTable;

@@ -30,7 +30,6 @@ class RulesTable extends Component {
             <ReactTabulator
             columns={this.columns}
             data={this.state.rules}
-            className="Table"
             />
             </div>
         )
