@@ -14,11 +14,13 @@ class PointsByWeek extends Component {
         .then(data =>{
             let dataPoints = []
             data.forEach(el => {
-                const index = this.findObjectIndex(dataPoints,'label', el.week);
-                if (index !== -1) {
-                    dataPoints[index].y += el.rule.points;
-                } else if (index === -1) {
+                const weekIndex = this.findObjectIndex(dataPoints,'label', el.week);
+                if (weekIndex !== -1) {
+                    dataPoints[weekIndex].y += el.rule.points;
+                } else if (weekIndex === -1) {
                     dataPoints.push({label: el.week, x: el.week, y: 0})
+                    const newWeek = dataPoints.length - 1;
+                    dataPoints[newWeek].y += el.rule.points;
                 }
             });
             dataPoints.sort((a,b)=> a.x - b.x)

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import TeamStandings from '../components/TeamStandings/TeamStandings';
 import TopChallengers from '../components/TopChallengers';
 import Table from '../components/Table';
+import { Container, Row, Col } from 'reactstrap';
+import Aux from '../hoc/Aux';;
 
 
 class Main extends Component {
@@ -18,15 +20,6 @@ class Main extends Component {
         })
     }
 
-    findObjectIndex(arr, attr, value) {
-        for(var i = 0; i < arr.length; i += 1) {
-            if(arr[i][attr] === value) {
-                return i;
-            }
-        }
-        return -1;
-    }
-
     fullStandingsColumns = [
         {title: "Challenger", field: "challenger", hozAlign: 'left'},
         {title: "Wk 1", field: "1", hozAlign: 'left'},
@@ -39,27 +32,41 @@ class Main extends Component {
         {title: "Wk 8", field: "8", hozAlign: 'left'},
         {title: "Wk 9", field: "9", hozAlign: 'left'},
         {title: "Wk 10", field: "10", hozAlign: 'left'},
-        {title: "Total", field: "total", hozAlign: 'left'},
+        {title: "Total", field: "total", hozAlign: 'left', sorter: "number", bottomCalc: 'sum'},
     ]
 
     fullStandingsOptions = {
         "initialSort": [
-            {column: "total", dir: "asc"},
-            {column: "challenger", dir: "asc"}
+            {column: "total", dir: "desc"},
         ]
     }
 
     render() {
         return (
-            <div>
-              <TeamStandings/>
-              <TopChallengers/>  
-              <Table
-              columns={this.fullStandingsColumns}
-              data={this.state.fullStandingsData}
-              options={this.fullStandingsOptions}
-              />
-            </div>
+            <Aux>
+                <Container>
+                    <Row>
+                        <Col>
+                        <TeamStandings/>
+                        </Col>
+                        <Col>
+                        <TopChallengers/> 
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                        <h2>Full Challenger Standings</h2>
+                        <Table
+                        columns={this.fullStandingsColumns}
+                        data={this.state.fullStandingsData}
+                        options={this.fullStandingsOptions}
+                        />
+                        </Col>
+                    </Row>
+                </Container> 
+
+            </Aux>
+
         )
     }
 }

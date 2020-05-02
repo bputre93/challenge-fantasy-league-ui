@@ -1,19 +1,20 @@
 import React from 'react';
-import { ReactTabulator } from 'react-tabulator';
 import 'react-tabulator/lib/styles.css';
 import 'react-tabulator/lib/css/tabulator.min.css';
+import Table from '../Table';
+import Aux from '../../hoc/Aux'
 
 const team = (props) => {
 
     return (
-        <div>
-            <h3>{props.teamName}</h3>
-            <h4>{props.owner}</h4>
-            <ReactTabulator
+        <Aux> 
+            <h4>{props.teamName}</h4>
+            <h5>{props.owner}</h5>
+            <Table
             data={props.data}
             columns={props.columns}
             />
-        </div>
+        </Aux>
     )
 
 }
