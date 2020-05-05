@@ -22,16 +22,16 @@ class Main extends Component {
 
     fullStandingsColumns = [
         {title: "Challenger", field: "challenger", hozAlign: 'left'},
-        {title: "Wk 1", field: "1", hozAlign: 'left'},
-        {title: "Wk 2", field: "2", hozAlign: 'left'},
-        {title: "Wk 3", field: "3", hozAlign: 'left'},
-        {title: "Wk 4", field: "4", hozAlign: 'left'},
-        {title: "Wk 5", field: "5", hozAlign: 'left'},
-        {title: "Wk 6", field: "6", hozAlign: 'left'},
-        {title: "Wk 7", field: "7", hozAlign: 'left'},
-        {title: "Wk 8", field: "8", hozAlign: 'left'},
-        {title: "Wk 9", field: "9", hozAlign: 'left'},
-        {title: "Wk 10", field: "10", hozAlign: 'left'},
+        {title: "Wk 1", field: "week1", hozAlign: 'left'},
+        {title: "Wk 2", field: "week2", hozAlign: 'left'},
+        {title: "Wk 3", field: "week3", hozAlign: 'left'},
+        {title: "Wk 4", field: "week4", hozAlign: 'left'},
+        {title: "Wk 5", field: "week5", hozAlign: 'left'},
+        {title: "Wk 6", field: "week6", hozAlign: 'left'},
+        {title: "Wk 7", field: "week7", hozAlign: 'left'},
+        {title: "Wk 8", field: "week8", hozAlign: 'left'},
+        {title: "Wk 9", field: "week9", hozAlign: 'left'},
+        {title: "Wk 10", field: "week10", hozAlign: 'left'},
         {title: "Total", field: "total", hozAlign: 'left', sorter: "number", bottomCalc: 'sum'},
     ]
 

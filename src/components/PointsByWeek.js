@@ -60,11 +60,9 @@ class PointsByWeek extends Component {
         }
 
         return (
-            <div>
                 <CanvasJSChart
                 options={options}
                 />
-            </div>
         )
     }
 }
