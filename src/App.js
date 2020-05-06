@@ -5,7 +5,7 @@ import Teams from './containers/Teams';
 import Statistics from './containers/Statistics';
 import Main from './containers/Main';
 import Scoring from './containers/Scoring';
-import Layout from './hoc/Layout';
+import Layout from './hoc/Layout/Layout';
 
 function App() {
   return (

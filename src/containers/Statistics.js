@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import RuleInstanceChart from '../components/RuleInstanceChart';
 import PointsByWeek from '../components/PointsByWeek';
 import LineGraph from '../components/LineGraph';
+import { Container, Row, Col } from 'reactstrap'
 
 
 class Statistics extends Component {
@@ -50,11 +51,16 @@ class Statistics extends Component {
               data: this.state.runningScoreGraphData
         }
         return (
-            <div>
-                <RuleInstanceChart/>
-                <PointsByWeek/>
-                <LineGraph options={runningScoreOptions}/>
-            </div>
+            <Container>
+                <Row>
+                    <Col md={12}>
+                    <LineGraph options={runningScoreOptions}/>
+                    <RuleInstanceChart/>
+                    <PointsByWeek/>
+                    </Col>
+                </Row>
+
+            </Container>
         )
     }
 }

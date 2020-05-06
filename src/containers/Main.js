@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import TeamStandings from '../components/TeamStandings/TeamStandings';
-import TopChallengers from '../components/TopChallengers';
 import Table from '../components/Table';
 import { Container, Row, Col } from 'reactstrap';
 import Aux from '../hoc/Aux';;
@@ -9,7 +7,9 @@ import Aux from '../hoc/Aux';;
 class Main extends Component {
 
     state = {
+        standings:[],
         fullStandingsData: [],
+        topChallengers:[],
     }
 
     componentDidMount() {
@@ -18,6 +18,23 @@ class Main extends Component {
         .then(data =>{
             this.setState({fullStandingsData: data});
         })
+        fetch('http://localhost:3000/teams/standings')
+        .then(res =>res.json())
+        .then((data) => {
+            data[0].owner = data[0].owner + " 🥇";
+            data[1].owner = data[1].owner + " 🥈";
+            data[2].owner = data[2].owner + " 🥉";
+            this.setState({standings: data})
+        })
+        .catch(console.log)
+        fetch('http://localhost:3000/challengers')
+        .then(res =>res.json())
+        .then((data) => {
+            const topFive = data.sort((a,b)=>(b.points > a.points ? 1: -1)).slice(0,5)
+            topFive[0].name = topFive[0].name + " 👑";
+            this.setState({topChallengers: topFive})
+        })
+        .catch(console.log)
     }
 
     fullStandingsColumns = [
@@ -41,22 +58,41 @@ class Main extends Component {
         ]
     }
 
+    standingsColumns = [
+        {title: "Team", field: "name", hozAlign: 'left'},
+        {title: "Owner", field: "owner", hozAlign: 'left'},
+        {title: "Total", field: "points", hozAlign: 'center'},
+    ];
+
+    topChallengerColumns = [
+        {title: "Challenger", field: "name", hozAlign: 'left'},
+        {title: "Points", field: "points", hozAlign: 'center'},
+    ];
+
     render() {
         return (
             <Aux>
                 <Container>
                     <Row>
                         <Col>
-                        <TeamStandings/>
+                        <Table
+                        title='Standings'
+                        columns={this.standingsColumns}
+                        data={this.state.standings}
+                        />
                         </Col>
                         <Col>
-                        <TopChallengers/> 
+                        <Table
+                        title='Top 5 Challengers'
+                        columns={this.topChallengerColumns}
+                        data={this.state.topChallengers}
+                        /> 
                         </Col>
                     </Row>
                     <Row>
                         <Col>
-                        <h2>Full Challenger Standings</h2>
                         <Table
+                        title='Full Challenger Standings'
                         columns={this.fullStandingsColumns}
                         data={this.state.fullStandingsData}
                         options={this.fullStandingsOptions}

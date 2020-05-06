@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Aux from './Aux';
-import Toolbar from '../components/Toolbar/Toolbar'
-
+import './Layout.css'
+import Aux from '../Aux';
+import Toolbar from '../../components/Toolbar/Toolbar'
 class Layout extends Component {
 
     render(){
