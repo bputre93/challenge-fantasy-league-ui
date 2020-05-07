@@ -14,13 +14,13 @@ const toolbar = (props) => (
                 <Container>
                     <Row>
                         <Col>
-                            <Nav.Link href='/teams' exact={true}>Teams</Nav.Link>
+                            <Nav.Link href='/teams'>Teams</Nav.Link>
                         </Col>
                         <Col>
-                            <Nav.Link href='/stats' exact={true}>Statistics</Nav.Link>
+                            <Nav.Link href='/stats'>Statistics</Nav.Link>
                         </Col>
                         <Col>
-                            <Nav.Link href='/scoring' exact={true}>Scoring</Nav.Link>
+                            <Nav.Link href='/scoring'>Scoring</Nav.Link>
                         </Col>
                     </Row>
                 </Container>

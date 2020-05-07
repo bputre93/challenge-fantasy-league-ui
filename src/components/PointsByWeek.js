@@ -43,7 +43,7 @@ class PointsByWeek extends Component {
     
         const options = {
             animationEnabled: true,
-            theme: "light2",
+            theme: "dark2",
             title: {
                 text: "Points Scored by Week"
               },

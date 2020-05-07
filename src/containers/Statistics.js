@@ -11,8 +11,10 @@ class Statistics extends Component {
         runningScoreGraphData: []
     }
 
+    BASE_URL = process.env.REACT_APP_API_URL;
+
     componentDidMount() {
-        fetch('http://localhost:3000/scores/teamTotalPointsByWeek')
+        fetch(`${this.BASE_URL}/scores/teamTotalPointsByWeek`)
         .then(res=> res.json())
         .then(data=>{
             const graphData = data.map(el=> {
@@ -38,7 +40,7 @@ class Statistics extends Component {
 
        const runningScoreOptions = {
             animationEnabled: true,
-            theme: "light2",
+            theme: "dark2",
             title: {
                 text: "Team Scores by Week"
               },
@@ -52,10 +54,16 @@ class Statistics extends Component {
         }
         return (
             <Container>
-                <Row>
+                <Row style={{padding: 10}}>
                     <Col md={12}>
                     <LineGraph options={runningScoreOptions}/>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col md={6}>
                     <RuleInstanceChart/>
+                    </Col>
+                    <Col md={6}>
                     <PointsByWeek/>
                     </Col>
                 </Row>

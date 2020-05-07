@@ -31,7 +31,7 @@ class RuleInstanceChart extends Component {
     
         const options = {
             animationEnabled: true,
-            theme: "light2",
+            theme: "dark2",
             title: {
                 text: "Instances of Each Rule"
               },

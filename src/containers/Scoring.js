@@ -8,8 +8,10 @@ class Scoring extends Component {
         rules: []
     };
 
+    BASE_URL = process.env.REACT_APP_API_URL;
+
     componentDidMount() {
-        fetch('http://localhost:3000/scoring')
+        fetch(`${this.BASE_URL}/scoring`)
         .then(res =>res.json())
         .then((data) => {
             this.setState({rules: data})
@@ -24,7 +26,7 @@ class Scoring extends Component {
 
     render() {
         return (
-            <Container>
+            <Container style={{padding: 50}}>
                 <Table
                 data={this.state.rules}
                 columns={this.ruleColumns}

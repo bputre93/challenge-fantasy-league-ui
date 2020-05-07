@@ -12,13 +12,15 @@ class Main extends Component {
         topChallengers:[],
     }
 
+    BASE_URL = process.env.REACT_APP_API_URL;
+
     componentDidMount() {
-        fetch('http://localhost:3000/scores/challengerWeeklyScores')
+        fetch(`${this.BASE_URL}/scores/challengerWeeklyScores`)
         .then(res=>res.json())
         .then(data =>{
             this.setState({fullStandingsData: data});
         })
-        fetch('http://localhost:3000/teams/standings')
+        fetch(`${this.BASE_URL}/teams/standings`)
         .then(res =>res.json())
         .then((data) => {
             data[0].owner = data[0].owner + " 🥇";
@@ -27,7 +29,7 @@ class Main extends Component {
             this.setState({standings: data})
         })
         .catch(console.log)
-        fetch('http://localhost:3000/challengers')
+        fetch(`${this.BASE_URL}/challengers`)
         .then(res =>res.json())
         .then((data) => {
             const topFive = data.sort((a,b)=>(b.points > a.points ? 1: -1)).slice(0,5)
@@ -70,9 +72,10 @@ class Main extends Component {
     ];
 
     render() {
+
         return (
             <Aux>
-                <Container>
+                <Container style={{padding: 50}}>
                     <Row>
                         <Col>
                         <Table

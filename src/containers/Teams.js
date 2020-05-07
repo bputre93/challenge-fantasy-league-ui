@@ -11,8 +11,10 @@ class Teams extends Component {
         draftData: []
     }
 
+    BASE_URL = process.env.REACT_APP_API_URL;
+
     componentDidMount() {
-        fetch('http://localhost:3000/teams')
+        fetch(`${this.BASE_URL}/teams`)
         .then(res => res.json())
         .then(data => {
             this.setState({teams: data})
@@ -20,7 +22,6 @@ class Teams extends Component {
             data.forEach(team => {
                 const owner = team.owner
                 team.challengers.forEach(chall=>{
-                    console.log(chall)
                     draftData.push({name: chall.name, owner: owner, draftPosition: chall.draftPosition})
                 })
             })
@@ -31,7 +32,7 @@ class Teams extends Component {
     teamColumns = [
         {title: "Challenger", field: "name", hozAlign: 'center'},
         {title: "Points", field: "points", hozAlign: 'center'},
-        {title: "Alive", field: "eliminated", hozAlign: 'center', formatter: "tickCross"}
+        {title: "Alive", field: "alive", hozAlign: 'center', formatter: "tickCross"}
     ]
 
     draftColumns = [
@@ -50,6 +51,9 @@ class Teams extends Component {
     render() {
 
         const teamCards = this.state.teams.map(team => {
+            team.challengers.forEach(chall=>{
+                chall.alive =  !chall.eliminated;
+            })
             return (
                     <Col md={6} key={team.id}>
                         <Team
@@ -66,7 +70,7 @@ class Teams extends Component {
 
         return (
         <Aux>
-            <Container fluid>
+            <Container fluid style={{padding: 50}}>
                 <Col md={4}>
                     <Table
                     title="Draft Recap"
