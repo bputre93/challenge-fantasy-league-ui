@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Team from '../components/Team/Team';
-import Table from '../components/Table'
+import Table from '../components/Table/Table'
 import Aux from '../hoc/Aux';
 import { Container, Row, Col } from 'react-bootstrap';
 
@@ -17,20 +17,23 @@ class Teams extends Component {
         fetch(`${this.BASE_URL}/teams`)
         .then(res => res.json())
         .then(data => {
-            this.setState({teams: data})
             const draftData = [];
             data.forEach(team => {
                 const owner = team.owner
                 team.challengers.forEach(chall=>{
+                    if(chall.redSkulls !== null || 0){
+                        chall.name = chall.name +'💀'
+                    }
                     draftData.push({name: chall.name, owner: owner, draftPosition: chall.draftPosition})
                 })
             })
+            this.setState({teams: data});
             this.setState({draftData: draftData});
         })
     }
 
     teamColumns = [
-        {title: "Challenger", field: "name", hozAlign: 'center'},
+        {title: "Challenger", field: "name", hozAlign: 'center', width: 125},
         {title: "Points", field: "points", hozAlign: 'center'},
         {title: "Alive", field: "alive", hozAlign: 'center', formatter: "tickCross"}
     ]

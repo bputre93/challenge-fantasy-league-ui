@@ -6,6 +6,17 @@ import Statistics from './containers/Statistics';
 import Main from './containers/Main';
 import Scoring from './containers/Scoring';
 import Layout from './hoc/Layout/Layout';
+import { createBrowserHistory } from 'history';
+
+const history = createBrowserHistory();
+const location = history.location;
+console.log(location)
+
+const path = (/#!(\/.*)$/.exec(location.hash) || [])[1];
+if (path) {
+    console.log(path)
+    history.replace(path);
+}
 
 function App() {
   return (

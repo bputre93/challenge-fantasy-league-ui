@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import RuleInstanceChart from '../components/RuleInstanceChart';
-import PointsByWeek from '../components/PointsByWeek';
 import LineGraph from '../components/LineGraph';
 import { Container, Row, Col } from 'reactstrap'
 
@@ -8,7 +7,8 @@ import { Container, Row, Col } from 'reactstrap'
 class Statistics extends Component {
 
     state = {
-        runningScoreGraphData: []
+        runningScoreGraphData: [],
+        weeklyPointsData: []
     }
 
     BASE_URL = process.env.REACT_APP_API_URL;
@@ -31,9 +31,34 @@ class Statistics extends Component {
                     }
                 )
             })
-            console.log(graphData);
             this.setState({runningScoreGraphData: graphData})
         })
+        fetch(`${this.BASE_URL}/scores`)
+        .then(res=>res.json())
+        .then(data =>{
+            let dataPoints = []
+            data.forEach(el => {
+                const weekIndex = this.findObjectIndex(dataPoints,'label', el.week);
+                if (weekIndex !== -1) {
+                    dataPoints[weekIndex].y += el.rule.points;
+                } else if (weekIndex === -1) {
+                    dataPoints.push({label: el.week, x: el.week, y: 0})
+                    const newWeek = dataPoints.length - 1;
+                    dataPoints[newWeek].y += el.rule.points;
+                }
+            });
+            dataPoints.sort((a,b)=> a.x - b.x)
+            this.setState({weeklyPointsData: dataPoints})
+        })
+    }
+
+    findObjectIndex(arr, attr, value) {
+        for(var i = 0; i < arr.length; i += 1) {
+            if(arr[i][attr] === value) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     render() {
@@ -52,6 +77,25 @@ class Statistics extends Component {
             },
               data: this.state.runningScoreGraphData
         }
+
+        const weeklyPointsOptions = {
+            animationEnabled: true,
+            theme: "dark2",
+            title: {
+                text: "Points Scored by Week"
+              },
+              axisY: {
+				title: "Points",
+            },
+            axisX: {
+				title: "Week",
+			},
+              data: [{				
+                        type: "spline",
+                        dataPoints: this.state.weeklyPointsData
+               }]
+        }
+
         return (
             <Container>
                 <Row style={{padding: 10}}>
@@ -64,7 +108,7 @@ class Statistics extends Component {
                     <RuleInstanceChart/>
                     </Col>
                     <Col md={6}>
-                    <PointsByWeek/>
+                    <LineGraph options={weeklyPointsOptions}/>
                     </Col>
                 </Row>
 

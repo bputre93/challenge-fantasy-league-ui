@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Table from '../components/Table';
+import Table from '../components/Table/Table';
 import { Container, Row, Col } from 'reactstrap';
 import Aux from '../hoc/Aux';;
 
@@ -32,6 +32,11 @@ class Main extends Component {
         fetch(`${this.BASE_URL}/challengers`)
         .then(res =>res.json())
         .then((data) => {
+            data.forEach(ch =>{
+                if(ch.redSkulls !== null || 0){
+                    ch.name = ch.name + '💀';
+                }
+            })
             const topFive = data.sort((a,b)=>(b.points > a.points ? 1: -1)).slice(0,5)
             topFive[0].name = topFive[0].name + " 👑";
             this.setState({topChallengers: topFive})
@@ -40,17 +45,17 @@ class Main extends Component {
     }
 
     fullStandingsColumns = [
-        {title: "Challenger", field: "challenger", hozAlign: 'left'},
-        {title: "Wk 1", field: "week1", hozAlign: 'left'},
-        {title: "Wk 2", field: "week2", hozAlign: 'left'},
-        {title: "Wk 3", field: "week3", hozAlign: 'left'},
-        {title: "Wk 4", field: "week4", hozAlign: 'left'},
-        {title: "Wk 5", field: "week5", hozAlign: 'left'},
-        {title: "Wk 6", field: "week6", hozAlign: 'left'},
-        {title: "Wk 7", field: "week7", hozAlign: 'left'},
-        {title: "Wk 8", field: "week8", hozAlign: 'left'},
-        {title: "Wk 9", field: "week9", hozAlign: 'left'},
-        {title: "Wk 10", field: "week10", hozAlign: 'left'},
+        {title: "Challenger", field: "challenger", hozAlign: 'left', width: 125},
+        {title: "1", field: "week1", hozAlign: 'left'},
+        {title: "2", field: "week2", hozAlign: 'left'},
+        {title: "3", field: "week3", hozAlign: 'left'},
+        {title: "4", field: "week4", hozAlign: 'left'},
+        {title: "5", field: "week5", hozAlign: 'left'},
+        {title: "6", field: "week6", hozAlign: 'left'},
+        {title: "7", field: "week7", hozAlign: 'left'},
+        {title: "8", field: "week8", hozAlign: 'left'},
+        {title: "9", field: "week9", hozAlign: 'left'},
+        {title: "10", field: "week10", hozAlign: 'left'},
         {title: "Total", field: "total", hozAlign: 'left', sorter: "number", bottomCalc: 'sum'},
     ]
 

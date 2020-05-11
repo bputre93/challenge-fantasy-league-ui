@@ -1,7 +1,7 @@
 import React from 'react';
 import 'react-tabulator/lib/styles.css';
 import 'react-tabulator/lib/css/tabulator.min.css';
-import Table from '../Table';
+import Table from '../Table/Table';
 import Aux from '../../hoc/Aux'
 
 const team = (props) => {

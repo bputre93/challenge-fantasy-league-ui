@@ -8,8 +8,10 @@ class RuleInstanceChart extends Component {
         dataPoints: null
     }
 
+    BASE_URL = process.env.REACT_APP_API_URL;
+
     componentDidMount() {
-        fetch('http://localhost:3000/scores/countsByRule')
+        fetch(`${this.BASE_URL}/scores/countsByRule`)
         .then(res=>res.json())
         .then(data =>{
             data.forEach(el => {

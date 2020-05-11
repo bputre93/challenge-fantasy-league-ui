@@ -2,7 +2,7 @@ import React from 'react';
 import './Table.css'
 import { ReactTabulator } from 'react-tabulator';
 import 'react-tabulator/lib/css/tabulator.min.css';
-import Aux from '../hoc/Aux'
+import Aux from '../../hoc/Aux'
 
 const table = (props) => {
     return (

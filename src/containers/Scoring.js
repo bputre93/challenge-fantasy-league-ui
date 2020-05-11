@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import { Container } from 'reactstrap';
-import Table from '../components/Table';
+import Table from '../components/Table/Table';
+import EnterScoreForm from './EnterScoreForm/EnterScoreForm';
+import Aux from '../hoc/Aux';
+import Mousetrap from 'mousetrap'
 
 class Scoring extends Component {
 
     state = {
-        rules: []
+        rules: [],
+        showForm: false
     };
 
     BASE_URL = process.env.REACT_APP_API_URL;
@@ -17,7 +21,12 @@ class Scoring extends Component {
             this.setState({rules: data})
         })
         .catch(console.log)
+        Mousetrap.bind('t e e j',()=>{
+            this.setState({showForm: true})
+        })
     }
+
+    
 
     ruleColumns = [
         {title: "Rule", field: "type", hozAlign: 'left'},
@@ -25,16 +34,18 @@ class Scoring extends Component {
     ];
 
     render() {
-        return (
-            <Container style={{padding: 50}}>
-                <Table
-                data={this.state.rules}
-                columns={this.ruleColumns}
-                title="Scoring Rules" 
-                />
-            </Container>
-                
 
+        return (
+            <Aux>
+                <Container style={{padding: 50}}>
+                    <Table
+                    data={this.state.rules}
+                    columns={this.ruleColumns}
+                    title="Scoring Rules" 
+                    />
+                </Container>
+                {this.state.showForm ? <EnterScoreForm/> : null}
+            </Aux>
         )
     }
 }

@@ -1,0 +1,19 @@
+Form {
+    background: lightgray;
+    margin: 0% 10%;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: left;
+}
+
+Form Label {
+    font-size: large;
+    color: black;
+}
+
+.button {
+    margin: auto;
+    align-self: center;
+    text-align: center;
+    color: black;
+}
