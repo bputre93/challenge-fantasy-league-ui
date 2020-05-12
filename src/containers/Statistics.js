@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import RuleInstanceChart from '../components/RuleInstanceChart';
-import LineGraph from '../components/LineGraph';
-import { Container, Row, Col } from 'reactstrap'
+import { Container, Row, Col } from 'reactstrap';
+import Chart from '../components/Chart';
 
 
 class Statistics extends Component {
 
     state = {
         runningScoreGraphData: [],
-        weeklyPointsData: []
+        weeklyPointsData: [],
+        pointsbySexData: [],
+        ruleData: []
     }
 
     BASE_URL = process.env.REACT_APP_API_URL;
@@ -49,6 +50,40 @@ class Statistics extends Component {
             });
             dataPoints.sort((a,b)=> a.x - b.x)
             this.setState({weeklyPointsData: dataPoints})
+        })
+        fetch(`${this.BASE_URL}/scores/countsByRule`)
+        .then(res=>res.json())
+        .then(data =>{
+            data.forEach(el => {
+                el.count = parseInt(el.count)
+            });
+            const ruleData = data.map(el=> {
+                return {
+                    label: el.type,
+                    y: el.count
+                }
+            })
+            this.setState({ruleData: ruleData})
+        })
+        fetch(`${this.BASE_URL}/challengers`)
+        .then(res=>res.json())
+        .then(data => {
+            let male = 0;
+            let female = 0;
+            data.forEach(chall => {
+                if(chall.sex === 'female'){
+                    female += chall.points
+                } else if(chall.sex === 'male'){
+                    male += chall.points
+                }
+            })
+            const malePerc = male/(male+female)*100
+            const femalePerc = female/(male+female)*100
+            const percData = [
+                {y: malePerc, name: 'Male'},
+                {y: femalePerc, name: 'Female'}
+            ]
+            this.setState({pointsbySexData: percData})
         })
     }
 
@@ -96,22 +131,52 @@ class Statistics extends Component {
                }]
         }
 
+        const pointsBySexOptions = {
+            animationEnabled: true,
+            theme: 'dark2',
+            title: {
+                text: 'Points Scored by Sex'
+            },
+            data:[{
+				type: "doughnut",
+				showInLegend: true,
+				indexLabel: "{name}: {y}",
+				yValueFormatString: "#,###'%'",
+				dataPoints: this.state.pointsbySexData
+			}]
+        }
+        const ruleOptions = {
+            animationEnabled: true,
+            theme: "dark2",
+            title: {
+                text: "Instances of Each Rule"
+              },
+              data: [{				
+                        type: "bar",
+                        dataPoints: this.state.ruleData
+               }]
+        }
+
         return (
             <Container>
                 <Row style={{padding: 10}}>
                     <Col md={12}>
-                    <LineGraph options={runningScoreOptions}/>
+                    <Chart options={runningScoreOptions}/>
                     </Col>
                 </Row>
-                <Row>
+                <Row style={{padding: 10}}>
                     <Col md={6}>
-                    <RuleInstanceChart/>
+                        <Chart options={pointsBySexOptions}/>
                     </Col>
                     <Col md={6}>
-                    <LineGraph options={weeklyPointsOptions}/>
+                    <Chart options={weeklyPointsOptions}/>
                     </Col>
                 </Row>
-
+                <Row style={{padding: 10}}>
+                    <Col md={12}>
+                        <Chart options={ruleOptions}/> 
+                    </Col>    
+                </Row>
             </Container>
         )
     }

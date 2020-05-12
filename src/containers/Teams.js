@@ -22,7 +22,10 @@ class Teams extends Component {
                 const owner = team.owner
                 team.challengers.forEach(chall=>{
                     if(chall.redSkulls !== null || 0){
-                        chall.name = chall.name +'💀'
+                        let i =0
+                        for(i = 0; i < chall.redSkulls; i++){
+                            chall.name = chall.name +'💀'
+                        }          
                     }
                     draftData.push({name: chall.name, owner: owner, draftPosition: chall.draftPosition})
                 })

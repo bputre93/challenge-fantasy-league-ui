@@ -2,7 +2,7 @@ import React from 'react';
 import CanvasJSReact from '../assets/canvasjs.react';
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
-const lineGraph = (props) => {
+const chart = (props) =>{
     return (
         <CanvasJSChart
         options={props.options}
@@ -10,4 +10,4 @@ const lineGraph = (props) => {
     )
 }
 
-export default lineGraph;
+export default chart;

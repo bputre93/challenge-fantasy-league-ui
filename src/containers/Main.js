@@ -68,7 +68,7 @@ class Main extends Component {
     standingsColumns = [
         {title: "Team", field: "name", hozAlign: 'left'},
         {title: "Owner", field: "owner", hozAlign: 'left'},
-        {title: "Total", field: "points", hozAlign: 'center'},
+        {title: "Total", field: "points", hozAlign: 'center', width: 100},
     ];
 
     topChallengerColumns = [
