@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import Chart from '../components/Chart';
 
-
 class Statistics extends Component {
 
     state = {
@@ -158,7 +157,7 @@ class Statistics extends Component {
         }
 
         return (
-            <Container>
+            <Container style={{height:'10vh'}}>
                 <Row style={{padding: 10}}>
                     <Col md={12}>
                     <Chart options={runningScoreOptions}/>
@@ -177,7 +176,7 @@ class Statistics extends Component {
                         <Chart options={ruleOptions}/> 
                     </Col>    
                 </Row>
-            </Container>
+            </Container>        
         )
     }
 }

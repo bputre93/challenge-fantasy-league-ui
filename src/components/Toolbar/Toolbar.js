@@ -17,6 +17,9 @@ const toolbar = (props) => (
                             <Nav.Link href='/teams'>Teams</Nav.Link>
                         </Col>
                         <Col>
+                            <Nav.Link href='/challengers'>Challengers</Nav.Link>
+                        </Col>
+                        <Col>
                             <Nav.Link href='/stats'>Statistics</Nav.Link>
                         </Col>
                         <Col>
