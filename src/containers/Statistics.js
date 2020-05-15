@@ -8,7 +8,8 @@ class Statistics extends Component {
         runningScoreGraphData: [],
         weeklyPointsData: [],
         pointsbySexData: [],
-        ruleData: []
+        ruleData: [],
+        draftValueData: []
     }
 
     BASE_URL = process.env.REACT_APP_API_URL;
@@ -83,6 +84,11 @@ class Statistics extends Component {
                 {y: femalePerc, name: 'Female'}
             ]
             this.setState({pointsbySexData: percData})
+
+            const draftValueData = data.map(chall=>{
+                return {x: chall.draftPosition, y: chall.points, label:chall.name}
+            })
+            this.setState({draftValueData: draftValueData})
         })
     }
 
@@ -156,6 +162,36 @@ class Statistics extends Component {
                }]
         }
 
+        const draftValueOptions = {
+            animationEnabled: true,
+            theme: 'dark2',
+            title: {
+                text: 'Points by Draft Position'
+            },
+            axisX: {
+				title:"Draft Position",
+				crosshair: {
+					enabled: true,
+					snapToDataPoint: true
+				}
+			},
+			axisY:{
+				title: "Points",
+				includeZero: false,
+				crosshair: {
+					enabled: true,
+					snapToDataPoint: true
+				}
+            },
+            data: [{
+				type: "scatter",
+				markerSize: 15,
+				toolTipContent: "<b>{label}</b>",
+				dataPoints: this.state.draftValueData
+			}]
+
+        }
+
         return (
             <Container style={{height:'10vh'}}>
                 <Row style={{padding: 10}}>
@@ -174,6 +210,11 @@ class Statistics extends Component {
                 <Row style={{padding: 10}}>
                     <Col md={12}>
                         <Chart options={ruleOptions}/> 
+                    </Col>    
+                </Row>
+                <Row style={{padding: 10}}>
+                    <Col md={12}>
+                        <Chart options={draftValueOptions}/> 
                     </Col>    
                 </Row>
             </Container>        
