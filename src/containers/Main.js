@@ -33,7 +33,7 @@ class Main extends Component {
         .then(res =>res.json())
         .then((data) => {
             data.forEach(ch =>{
-                if(ch.redSkulls !== null || 0){
+                if(ch.redSkulls >= 1){
                     ch.name = ch.name + '💀';
                 }
             })
