@@ -169,11 +169,15 @@ class Statistics extends Component {
                 text: 'Points by Draft Position'
             },
             axisX: {
-				title:"Draft Position",
+                title:"Draft Position",
+                interval: 5,
 				crosshair: {
 					enabled: true,
 					snapToDataPoint: true
-				}
+                },
+                labelFormatter: function(e){
+                    return  e.value
+                }
 			},
 			axisY:{
 				title: "Points",
@@ -185,15 +189,24 @@ class Statistics extends Component {
             },
             data: [{
 				type: "scatter",
-				markerSize: 15,
+                markerSize: 15,
 				toolTipContent: "<b>{label}</b>",
 				dataPoints: this.state.draftValueData
-			}]
+            },
+            {
+				type: "line",
+				dataPoints: [
+                    {x:1,y:28},
+                    {x:28, y:1}
+                ]
+            }
+        ]
 
         }
 
         return (
-            <Container style={{height:'10vh'}}>
+            <div style={{height:'95vh', overflow: 'auto'}}>
+            <Container>
                 <Row style={{padding: 10}}>
                     <Col md={12}>
                     <Chart options={runningScoreOptions}/>
@@ -217,7 +230,8 @@ class Statistics extends Component {
                         <Chart options={draftValueOptions}/> 
                     </Col>    
                 </Row>
-            </Container>        
+            </Container>
+            </div>        
         )
     }
 }

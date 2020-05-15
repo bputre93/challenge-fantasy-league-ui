@@ -80,6 +80,7 @@ class Main extends Component {
 
         return (
             <Aux>
+                <div style={{height:'95vh', overflow: 'auto'}}>
                 <Container style={{padding: 50}}>
                     <Row>
                         <Col>
@@ -108,7 +109,7 @@ class Main extends Component {
                         </Col>
                     </Row>
                 </Container> 
-
+                </div>
             </Aux>
 
         )

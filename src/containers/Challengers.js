@@ -38,7 +38,7 @@ class Challengers extends Component {
 
         return (
             <Aux>
-                <div style={{height: '90vh',overflow: 'auto'}}>
+                <div style={{height: '95vh',overflow: 'auto'}}>
                         {challengerCards}
                 </div>
             </Aux>

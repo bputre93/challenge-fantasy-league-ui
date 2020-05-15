@@ -76,6 +76,7 @@ class Teams extends Component {
 
         return (
         <Aux>
+            <div style={{height:'95vh', overflow: 'auto'}}>
             <Container fluid style={{padding: 50}}>
                 <Col md={4}>
                     <Table
@@ -93,6 +94,7 @@ class Teams extends Component {
                     </Container>
                 </Col>
             </Container>
+            </div>
         </Aux>
         )
     }
