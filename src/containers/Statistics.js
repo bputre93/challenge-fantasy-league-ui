@@ -192,15 +192,7 @@ class Statistics extends Component {
                 markerSize: 15,
 				toolTipContent: "<b>{label}</b>",
 				dataPoints: this.state.draftValueData
-            },
-            {
-				type: "line",
-				dataPoints: [
-                    {x:1,y:28},
-                    {x:28, y:1}
-                ]
-            }
-        ]
+            }]
 
         }
 
