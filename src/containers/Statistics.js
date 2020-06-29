@@ -21,13 +21,14 @@ class Statistics extends Component {
             const graphData = data.map(el=> {
                 const dataPoints = el.totals.map((num,i)=>{
                     const index = i +1
-                    return {y: num, label: `${index}`}
+                    return {y: num, x: index}
                 })
                 return (
                     {
                         type:"spline",
                         name: el.owner,
                         showInLegend: true,
+                        toolTipContent: `${el.owner}: {y}`,
                         dataPoints: dataPoints
                     }
                 )

@@ -56,6 +56,10 @@ class Main extends Component {
         {title: "8", field: "week8", hozAlign: 'left'},
         {title: "9", field: "week9", hozAlign: 'left'},
         {title: "10", field: "week10", hozAlign: 'left'},
+        {title: "11", field: "week11", hozAlign: 'left'},
+        {title: "12", field: "week12", hozAlign: 'left'},
+        {title: "13", field: "week13", hozAlign: 'left'},
+        {title: "14", field: "week14", hozAlign: 'left'},
         {title: "Total", field: "total", hozAlign: 'left', sorter: "number", bottomCalc: 'sum'},
     ]
 
