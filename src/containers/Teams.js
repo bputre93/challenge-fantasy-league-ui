@@ -25,7 +25,10 @@ class Teams extends Component {
                         let i =0
                         for(i = 0; i < chall.redSkulls; i++){
                             chall.name = chall.name +'💀'
-                        }          
+                        }
+                    }
+                    if (chall.finals) {
+                        chall.name = chall.name +'🏁'
                     }
                     draftData.push({name: chall.name, owner: owner, draftPosition: chall.draftPosition})
                 })

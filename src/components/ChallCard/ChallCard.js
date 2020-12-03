@@ -6,16 +6,17 @@ import './ChallCard.css'
 const cardStyle = {
     margin: '4px',
     borderRadius: '4px',
-    backgroundColor: '#e8e3e3'
+    backgroundColor: 'black',
+    opacity: 0.9    
 }
 
 const titleStyle = {
     fontSize: 'x-large',
-    color: 'black',
+    color: 'white',
 }
 
 const bodyStyle = {
-
+    color: 'white'
 }
 
 const listGroupStyle = {

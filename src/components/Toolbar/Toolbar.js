@@ -6,7 +6,7 @@ import thumbnail from '../../assets/challenge-trans-logo.png';
 import { Container, Col, Row } from 'reactstrap';
 
 const toolbar = (props) => (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" sticky="top">
+    <Navbar className="color-navbar" collapseOnSelect expand="lg" /*bg="dark"*/ variant="dark" sticky="top">
         <Navbar.Brand href="/"><img src={thumbnail} width='150' height='50' alt="Home"/></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav"/>
         <Navbar.Collapse id="basic-navbar-nav">   

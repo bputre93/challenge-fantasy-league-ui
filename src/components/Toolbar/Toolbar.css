@@ -1,9 +1,11 @@
-.navbar {
+.color-navbar {
     margin: 0;
     border-radius: 0;
+    background-color: maroon;
 }
 
 .nav-item a {
     font-size: large;
     font-family: Arial, Helvetica, sans-serif;
 }
+

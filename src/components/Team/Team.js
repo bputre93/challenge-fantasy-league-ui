@@ -8,8 +8,10 @@ const team = (props) => {
 
     return (
         <Aux> 
-            <h4>{props.teamName}</h4>
-            <h5>{props.owner}</h5>
+            <h3 style={{color: 'white', fontWeight: 'bold'}}>
+                {props.teamName}
+                <h4 style={{color: 'white'}}>{props.owner}</h4>
+            </h3>
             <Table
             data={props.data}
             columns={props.columns}
