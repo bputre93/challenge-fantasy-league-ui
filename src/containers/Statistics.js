@@ -197,15 +197,20 @@ class Statistics extends Component {
 
         }
 
+        const graphStyle = {
+            padding: 10, 
+            opacity: 0.85
+        }
+
         return (
             <div style={{height:'95vh', overflow: 'auto'}}>
             <Container>
-                <Row style={{padding: 10}}>
+                <Row style={graphStyle}>
                     <Col md={12}>
                     <Chart options={runningScoreOptions}/>
                     </Col>
                 </Row>
-                <Row style={{padding: 10}}>
+                <Row style={graphStyle}>
                     <Col md={6}>
                         <Chart options={pointsBySexOptions}/>
                     </Col>
@@ -213,12 +218,12 @@ class Statistics extends Component {
                     <Chart options={weeklyPointsOptions}/>
                     </Col>
                 </Row>
-                <Row style={{padding: 10}}>
+                <Row style={graphStyle}>
                     <Col md={12}>
                         <Chart options={ruleOptions}/> 
                     </Col>    
                 </Row>
-                <Row style={{padding: 10}}>
+                <Row style={graphStyle}>
                     <Col md={12}>
                         <Chart options={draftValueOptions}/> 
                     </Col>    

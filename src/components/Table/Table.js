@@ -13,7 +13,7 @@ const table = (props) => {
             data={props.data}
             options={props.options}
             layout='fitColumns'
-            className="table"
+            style={{opacity: 0.85}}
             />
         </Aux>
     )

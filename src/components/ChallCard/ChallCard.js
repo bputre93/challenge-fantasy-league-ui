@@ -25,7 +25,7 @@ const listGroupStyle = {
 }
 
 const listItemStyle = {
-    fontSize: 'small',
+    fontSize: 'medium',
     backgroundColor: 'inherit'
 }
 
