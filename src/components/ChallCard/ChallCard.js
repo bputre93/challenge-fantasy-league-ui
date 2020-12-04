@@ -37,7 +37,7 @@ const challCard = (props) => {
                     <Col lg={12}>
                         <Card style={cardStyle}>
                             <div style={{display: 'flex', flex:'1 1 auto', margin:'2px'}}>
-                            <img src={props.imageUrl} alt='chall-pic' height='200' width='150'/>
+                            <img src={props.imageUrl} alt='chall-pic' height='225' width='175'/>
                             <Card.Body style={bodyStyle}>
                                 <Card.Title style={titleStyle}>{props.name}</Card.Title>
                                 <ListGroup style={listGroupStyle} variant='flush'>

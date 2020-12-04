@@ -1,6 +1,7 @@
 import React from 'react';
 import './Table.css'
 import { ReactTabulator } from 'react-tabulator';
+import 'react-tabulator/lib/styles.css';
 import 'react-tabulator/lib/css/tabulator.min.css';
 import Aux from '../../hoc/Aux'
 
@@ -13,7 +14,8 @@ const table = (props) => {
             data={props.data}
             options={props.options}
             layout='fitColumns'
-            style={{opacity: 0.90}}
+            style={{opacity: 0.95}}
+            className='tabulator'
             />
         </Aux>
     )
