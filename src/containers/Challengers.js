@@ -31,6 +31,9 @@ class Challengers extends Component {
                 redSkulls={chall.redSkulls}
                 status={chall.eliminated ? 'Eliminated' : 'Active'}
                 imageUrl={chall.imageUrl}
+                instagramHandle={chall.instagramHandle}
+                instagramUrl={chall.instagramUrl}
+                funFact={chall.funFact}
                 />
             )
         })

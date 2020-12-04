@@ -50,8 +50,11 @@ const challCard = (props) => {
                                         <Col md={6}>
                                             <ListGroup.Item style={listItemStyle}><b>Seasons:</b> {props.seasons}</ListGroup.Item>
                                             <ListGroup.Item style={listItemStyle}><b>Original Show:</b> {props.originalShow}</ListGroup.Item>
-                                            <ListGroup.Item style={listItemStyle}><b>Sex:</b> {props.sex}</ListGroup.Item>
+                                            <ListGroup.Item style={listItemStyle}><b>Instagram:</b> <a href={props.instagramUrl} target="_blank" rel="noopener noreferrer" style={{color: "white"}}>{props.instagramHandle}</a></ListGroup.Item>
                                         </Col>
+                                        <Row style={{paddingLeft: '32px'}}>
+                                            <ListGroup.Item style={listItemStyle}><b>Fun Fact: </b>{props.funFact}</ListGroup.Item>
+                                        </Row>
                                     </Container>
                                 </ListGroup>
                             </Card.Body>
