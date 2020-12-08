@@ -20,7 +20,10 @@ const toolbar = (props) => (
                             <Nav.Link href='/challengers'>Challengers</Nav.Link>
                         </Col>
                         <Col>
-                            <Nav.Link href='/stats'>Statistics</Nav.Link>
+                            <Nav.Link href='/stats'>Stats</Nav.Link>
+                        </Col>
+                        <Col>
+                            <Nav.Link href='/recaps'>Recaps</Nav.Link>
                         </Col>
                         <Col>
                             <Nav.Link href='/scoring'>Scoring</Nav.Link>

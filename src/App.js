@@ -8,6 +8,7 @@ import Scoring from './containers/Scoring';
 import Layout from './hoc/Layout/Layout';
 import { createBrowserHistory } from 'history';
 import Challengers from './containers/Challengers';
+import Recaps from './containers/Recaps';
 
 const history = createBrowserHistory();
 const location = history.location;
@@ -28,6 +29,7 @@ function App() {
         <Route path="/stats" exact component={Statistics}/>
         <Route path="/scoring" exact component={Scoring}/>
         <Route path="/challengers" exact component={Challengers}/>
+        <Route path="/recaps" exact component={Recaps}/>
       </Switch>
     </Layout>
   );
