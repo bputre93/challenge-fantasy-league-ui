@@ -26,6 +26,9 @@ const toolbar = (props) => (
                             <Nav.Link href='/recaps'>Recaps</Nav.Link>
                         </Col>
                         <Col>
+                            <Nav.Link href='/rankings'>Rankings</Nav.Link>
+                        </Col>
+                        <Col>
                             <Nav.Link href='/scoring'>Scoring</Nav.Link>
                         </Col>
                     </Row>

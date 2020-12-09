@@ -1,7 +1,6 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card'
 import { ListGroup, Row, Container, Col } from 'react-bootstrap';
-import './ChallCard.css'
 
 const cardStyle = {
     margin: '4px',
@@ -37,7 +36,7 @@ const challCard = (props) => {
                     <Col lg={12}>
                         <Card style={cardStyle}>
                             <div style={{display: 'flex', flex:'1 1 auto', margin:'2px'}}>
-                            <img src={props.imageUrl} alt='chall-pic' height='225' width='175'/>
+                            <img src={props.imageUrl} alt='chall-pic' height='225' width='200'/>
                             <Card.Body style={bodyStyle}>
                                 <Card.Title style={titleStyle}>{props.name}</Card.Title>
                                 <ListGroup style={listGroupStyle} variant='flush'>

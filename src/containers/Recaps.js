@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Aux from '../hoc/Aux';
-import RecapCard from '../components/RecapCard/RecapCard';
+import RecapCard from '../components/RecapCard';
 
 class Recaps extends Component {
     state = {

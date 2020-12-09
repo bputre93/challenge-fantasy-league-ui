@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ChallCard from '../components/ChallCard/ChallCard';
+import ChallCard from '../components/ChallCard';
 import Aux from '../hoc/Aux';
 
 class Challengers extends Component {
