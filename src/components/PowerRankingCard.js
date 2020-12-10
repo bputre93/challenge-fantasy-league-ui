@@ -37,6 +37,20 @@ const rankingCard = (props) => {
         backgroundColor: 'inherit'
     }
 
+    let emoji;
+
+    if(props.prevRank < props.powerRank) {
+        emoji = '🔻'
+    }
+    if(props.prevRank > props.powerRank) {
+        emoji = '🔼'
+    }
+    if(props.prevRank === props.powerRank) {
+        emoji = '↔️'
+    }
+
+
+
     return (
         <Container>
         <Row>
@@ -48,6 +62,7 @@ const rankingCard = (props) => {
                             <Container>
                                 <Row>
                                     <ListGroup.Item style={listItemStyle}><b>Owner:</b> {props.owner}</ListGroup.Item>
+                                    <ListGroup.Item style={listItemStyle}><b>Prev:</b> {props.prevRank} {emoji}</ListGroup.Item>
                                 </Row>
                                 <Row>
                                     <ListGroup.Item style={writeUpStyle}>{props.writeup}</ListGroup.Item>

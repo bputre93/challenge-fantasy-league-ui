@@ -1,24 +1,51 @@
 import React, { Component } from 'react';
-import Aux from '../hoc/Aux';
 import RankingCard from '../components/PowerRankingCard';
+import { Select } from 'react-dropdown-select'
+import { Container } from 'react-bootstrap';
 
 class PowerRankings extends Component {
     state = {
         rankings: [],
+        weeks:[],
+        selectOptions: [],
     }
 
     BASE_URL = process.env.REACT_APP_API_URL;
 
     componentDidMount(){
-        fetch(`${this.BASE_URL}/rankings/week/0`)
+        this.loadRankingsForWeek(0)
+        this.determineWeeks();
+    }
+
+    loadRankingsForWeek = (week) => {
+        fetch(`${this.BASE_URL}/rankings/week/${week}`)
         .then(res=>res.json())
         .then(data=>{
             this.setState({rankings: data})
         })
     }
 
-    //TODO: Add dropdown for each week.
-    //Default to most recent week
+    determineWeeks = () => {
+        fetch(`${this.BASE_URL}/rankings`)
+        .then(res =>res.json())
+        .then(data=>{
+            const weeks = [];
+            data.forEach(el => {
+                if (!weeks.includes(el.week)) {
+                    weeks.push(el.week)
+                }
+            });
+            weeks.sort()
+            this.setState({weeks: weeks})
+
+            const selectOptions = [];
+            weeks.forEach(el => {
+                selectOptions.push({label: `Week ${el}`, value: el})
+            })
+
+            this.setState({selectOptions: selectOptions});
+        })
+    }
     //Add previous rank and increase/decrease
 
 
@@ -34,18 +61,31 @@ class PowerRankings extends Component {
                 owner={ranking.team.owner}
                 writeup={ranking.writeup}
                 powerRank={ranking.powerRank}
+                prevRank={ranking.prevRank}
                 />
             )
         })
 
         return (
-            <Aux>
+            <Container>
                 <h1 style={{color: 'white', textAlign: 'center', paddingTop: '16px'}}>Team Power Rankings</h1>
-                <h3 style={{color: 'white', textAlign: 'center', padding: '4px'}}>Courtesy of the Original Big T Haloway</h3>
+                <h3 style={{color: 'white', textAlign: 'center', padding: '4px'}}>Courtesy of the Original Big T Holaway</h3>
+                <Select
+                options={this.state.selectOptions} 
+                onChange={(week) => this.loadRankingsForWeek(week[0].value)}
+                labelField={this.state.selectOptions.label}
+                valueField={this.state.selectOptions.value}
+                placeholder={'Week 0'}
+                color={'#870b1b'}
+                keepSelectedInList={true}
+                searchable={false}
+                createNewLabel={false}
+                style={{maxWidth: '25%', marginLeft: '24px', backgroundColor: 'lightgrey', fontSize: 'small'}}
+                />
                 <div style={{height: '95vh',overflow: 'auto'}}>
                     {rankingCards}
                 </div>
-            </Aux>
+            </Container>
         )
     }
 }
