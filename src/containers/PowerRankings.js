@@ -46,8 +46,6 @@ class PowerRankings extends Component {
             this.setState({selectOptions: selectOptions});
         })
     }
-    //Add previous rank and increase/decrease
-
 
     render() {
 

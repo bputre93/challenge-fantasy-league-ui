@@ -33,18 +33,27 @@ class Scoring extends Component {
         {title: "Points", field: "points", hozAlign: 'left'},
     ];
 
+    rulesOptions = {
+        "initialSort": [
+            {column: "points", dir: "desc"}
+        ]
+    }
+
+
     render() {
 
         return (
             <Aux>
-                <Container style={{padding: 50}}>
+                <Container style={{padding: 50, overflow: 'auto'}}>
                     <Table
                     data={this.state.rules}
                     columns={this.ruleColumns}
+                    options={this.rulesOptions}
                     title="Scoring Rules" 
                     />
-                </Container>
                 {this.state.showForm ? <EnterScoreForm/> : null}
+                </Container>
+
             </Aux>
         )
     }

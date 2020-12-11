@@ -55,7 +55,7 @@ const recapCard = (props) => {
                                     <ListGroup.Item style={listItemStyle}><b>Eliminations:</b> {props.eliminations}</ListGroup.Item>
                                 </Col>
                                 <Row style={{paddingLeft: '32px'}}>
-                                    <ListGroup.Item style={writeUpStyle}>{props.writeup}</ListGroup.Item>
+                                    <ListGroup.Item style={writeUpStyle} dangerouslySetInnerHTML={{__html: props.writeup}}></ListGroup.Item>
                                 </Row>
                             </Container>
                         </ListGroup>
